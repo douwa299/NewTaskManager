@@ -1,0 +1,87 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+mat-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+mat-card-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 1.2rem;
+}
+
+// Make login button slightly different color than signup
+button[mat-raised-button] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 0.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  background: #4a6fa5; // Different shade than signup
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: #3a5a8c;
+  }
+
+  &:disabled {
+    background: #cccccc;
+  }
+}
+
+// Forgot password link
+.forgot-password {
+  text-align: right;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+
+  a {
+    color: #6c757d;
+    text-decoration: none;
+    font-size: 0.9rem;
+
+    &:hover {
+      color: #2c3e50;
+      text-decoration: underline;
+    }
+  }
+}
+
+.signup-link {
+  display: block;
+  margin: auto;
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #6c757d;
+  font-size: 0.9rem;
+
+  a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+

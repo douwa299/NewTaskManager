@@ -1,0 +1,342 @@
+// If using SCSS, otherwise convert to regular CSS
+.task-list {
+  display: grid;
+  gap: 24px;
+  padding: 16px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    padding: 24px;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  }
+}
+
+.task-card {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .task-details {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .task-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0 0 12px 0;
+    line-height: 1.3;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #f0f0f0;
+  }
+
+  .task-description {
+    color: #5d6d7e;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  mat-divider {
+    margin: 16px 0;
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+
+  .task-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  .info-label {
+    font-weight: 500;
+    color: #5d6d7e;
+    font-size: 0.9rem;
+    min-width: 80px;
+  }
+
+  .info-value {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 0.95rem;
+    text-align: right;
+    flex: 1;
+    margin-left: 16px;
+
+    // Priority styling
+    &[class*="priority"] {
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    &.priority-HIGH {
+      background-color: #ffebee;
+      color: #c62828;
+    }
+
+    &.priority-MEDIUM {
+      background-color: #fff3e0;
+      color: #ef6c00;
+    }
+
+    &.priority-LOW {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    // Status styling
+    &[class*="status"] {
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    &.status-PENDING {
+      background-color: #e3f2fd;
+      color: #1565c0;
+    }
+
+    &.status-IN_PROGRESS {
+      background-color: #fff3e0;
+      color: #f57c00;
+    }
+
+    &.status-COMPLETED {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    padding-top: 12px;
+
+    button, a {
+      transition: all 0.2s ease;
+      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      &.view-button {
+        background-color: rgba(63, 81, 181, 0.08);
+
+        &:hover {
+          background-color: rgba(63, 81, 181, 0.15);
+        }
+      }
+
+      &.update-button {
+        background-color: rgba(33, 150, 243, 0.08);
+
+        &:hover {
+          background-color: rgba(33, 150, 243, 0.15);
+        }
+      }
+
+      &.delete-button {
+        background-color: rgba(244, 67, 54, 0.08);
+
+        &:hover {
+          background-color: rgba(244, 67, 54, 0.15);
+        }
+      }
+    }
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+// Empty state styling
+.task-list:empty::before {
+  content: 'No tasks found';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  color: #9e9e9e;
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+// Loading state (add this if you have loading)
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+// Responsive adjustments
+@media (max-width: 600px) {
+  .task-list {
+    padding: 12px;
+    gap: 16px;
+  }
+
+  .task-card {
+    .task-details {
+      padding: 16px;
+    }
+
+    .task-name {
+      font-size: 1.2rem;
+    }
+
+    .info-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      padding: 8px 0;
+    }
+
+    .info-label, .info-value {
+      width: 100%;
+      text-align: left;
+    }
+
+    .info-value {
+      margin-left: 0;
+    }
+
+    .actions {
+      justify-content: space-around;
+    }
+  }
+}
+
+// Dark theme support
+@media (prefers-color-scheme: dark) {
+  .task-card {
+    background-color: #2d2d2d;
+    border-color: #444;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+    &:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      border-color: #555;
+    }
+  }
+
+  .task-name, .info-value:not([class*="priority"]):not([class*="status"]) {
+    color: #e0e0e0;
+  }
+
+  .task-description, .info-label {
+    color: #aaa;
+  }
+
+  mat-divider {
+    background-color: #444;
+  }
+
+  .info-row:not(:last-child) {
+    border-bottom-color: #444;
+  }
+}
+
+/* Add to your component's SCSS file or global styles */
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 600px;
+
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
+  }
+
+  .mat-form-field-outline {
+    background-color: white;
+    border-radius: 4px;
+  }
+
+  .mat-form-field-infix {
+    padding: 12px 0;
+  }
+
+  input {
+    font-size: 16px;
+    padding: 8px 0;
+  }
+}
+
+/* Optional: Add some animation on focus */
+.search-input.mat-form-field-appearance-outline.mat-focused {
+  .mat-form-field-outline-thick {
+    color: #3f51b5; /* Material indigo */
+  }
+}
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+  .search-form {
+    padding: 15px 10px;
+  }
+
+  .search-input {
+    max-width: 100%;
+  }
+}

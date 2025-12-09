@@ -1,0 +1,109 @@
+.navbar {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 0 24px;
+  height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  // For better mobile responsiveness
+  @media (max-width: 768px) {
+    padding: 0 16px;
+    height: 60px;
+  }
+
+  .navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    // Optional icon before text
+    &::before {
+      content: '✓';
+      font-size: 1.3rem;
+      background: white;
+      color: mat-color(primary);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  button[mat-button] {
+    margin: 0 8px;
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 100px;
+
+    // First button (Register)
+    &:first-of-type {
+      background-color: rgba(white, 0.1);
+      border: 1px solid rgba(white, 0.2);
+
+      &:hover {
+        background-color: rgba(white, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+    }
+
+    // Last button (Login) - different style
+    &:last-of-type {
+      background-color: white;
+      color: mat-color(primary);
+
+      &:hover {
+        background-color: rgba(white, 0.95);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+    }
+
+    &.active {
+      background-color: rgba(white, 0.15);
+      border: 2px solid rgba(white, 0.5);
+    }
+
+    @media (max-width: 768px) {
+      padding: 6px 16px;
+      min-width: 80px;
+      margin: 0 4px;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 480px) {
+      min-width: 70px;
+      padding: 4px 12px;
+    }
+  }
+}
+
+// Optional: Add animation for page load
+:host {
+  display: block;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

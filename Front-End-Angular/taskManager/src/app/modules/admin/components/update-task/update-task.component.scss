@@ -1,0 +1,114 @@
+.container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.container h2 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.container .form-field {
+  width: 100%;
+}
+
+.container .mat-form-field-label {
+  color: #555;
+  font-weight: 500;
+}
+
+.container .mat-form-field-outline {
+  color: #ddd;
+}
+
+.container .mat-form-field.mat-focused .mat-form-field-outline-thick {
+  color: #1976d2;
+}
+
+.container .mat-form-field.mat-focused .mat-form-field-label {
+  color: #1976d2;
+}
+
+.container .mat-input-element {
+  color: #333;
+  font-size: 1rem;
+}
+
+.container textarea.mat-input-element {
+  min-height: 100px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.container .mat-error {
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  color: #d32f2f;
+}
+
+.container form button[type="submit"] {
+  margin-top: 1rem;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  align-self: center;
+  min-width: 200px;
+  height: 48px;
+  transition: all 0.3s ease;
+}
+
+.container form button[type="submit"]:not([disabled]) {
+  background-color: #1976d2;
+  color: white;
+}
+
+.container form button[type="submit"]:not([disabled]):hover {
+  background-color: #1565c0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+}
+
+.container form button[type="submit"][disabled] {
+  background-color: #e0e0e0;
+  color: #9e9e9e;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .container form {
+    gap: 1rem;
+  }
+
+  .container form button[type="submit"] {
+    width: 100%;
+    min-width: unset;
+  }
+}
